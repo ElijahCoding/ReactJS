@@ -9,8 +9,8 @@ class App extends Component {
 
     }
 
-    readMore = () => {
-        this.setState({ displayBio: true });
+    toggle = () => {
+        this.setState({ displayBio: !this.state.displayBio });
     }
 
     render () {
@@ -28,10 +28,13 @@ class App extends Component {
                         </div>
                     ) : (
                         <div>
-                            <button onClick={this.readMore}>Read more</button>
+                            
                         </div>
                     )
                 }
+                <div>
+                    <button onClick={this.toggle}>Toggle</button>
+                </div>
             </div>
         )
     }
