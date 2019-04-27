@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 
+const Joke = ({ joke: { setup, punchline } }) => {
+    return <p style={{ margin: 20 }}>{setup} <em>{punchline}</em></p>
+}
+
 class Jokes extends Component {
     state = { joke: {}, jokes: [] }
 
@@ -18,12 +22,16 @@ class Jokes extends Component {
     }
 
     render () {
-        const { setup, punchline } = this.state.joke
         return (
             <div>
                 <h2>Highlighted Joke</h2>
-                <p>{setup} <em>{punchline}</em></p>
+                <Joke joke={this.state.joke} />
                 <hr />
+                <h3>Want ten new jokes ?</h3>
+                <button onClick={this.fetchJokes}>CLick me !</button>
+                {
+                    this.state.jokes.map(joke => <Joke key={joke.id} joke={joke} />)
+                }
             </div>
         )
     }
