@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Projects from './Projects'
 import SocialProfiles from './SocialProfiles'
-import profile from './assets/profile.png'
+import profile from '../assets/profile.png'
 import Title from './Title'
 import Jokes from './Jokes'
 
@@ -21,7 +21,7 @@ class App extends Component {
     render () {
         return (
             <div>
-                <img src={profile} className="profile" />
+                <img src={profile} alt="" className="profile" />
                 <p>
                     hi hi
                 </p>
