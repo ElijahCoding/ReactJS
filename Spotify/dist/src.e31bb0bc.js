@@ -25802,6 +25802,12 @@ function (_Component) {
       artistQuery: ''
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleKeyPress", function (event) {
+      if (event.key === 'Enter') {
+        _this.searchArtist();
+      }
+    });
+
     _defineProperty(_assertThisInitialized(_this), "updateArtistQuery", function (event) {
       _this.setState({
         artistQuery: event.target.value
@@ -25820,6 +25826,7 @@ function (_Component) {
     value: function render() {
       return _react.default.createElement("div", null, _react.default.createElement("h2", null, "Music Master"), _react.default.createElement("input", {
         onChange: this.updateArtistQuery,
+        onKeyPress: this.handleKeyPress,
         placeholder: "Search for an Artist"
       }), _react.default.createElement("button", {
         onClick: this.searchArtist
