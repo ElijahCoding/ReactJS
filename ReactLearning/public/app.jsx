@@ -1,21 +1,31 @@
 var Greeter = React.createClass({
     getDefaultProps: function () {
-        return {}
+        return {
+            name: 'React',
+            message: 'default message'
+        }
+    },
+
+    getInitialState: function () {
+        return {
+            name: this.props.name
+        };
     },
 
     onButtonClick: function (e) {
         e.preventDefault();
 
         var name = this.refs.name.value;
-        alert(name);
+        this.setState({ name: this.refs.name.value })
     },
 
     render: function () {
-        var name = this.props.name
+        var name = this.state.name
+        var message = this.props.message
         return (
             <div>
                 <h1>Hello {name} !</h1>
-                <p>This is form a component!</p>
+                <p>{message}</p>
 
                 <form onSubmit={this.onButtonClick}>
                     <input type="text" ref="name"/>
@@ -27,6 +37,6 @@ var Greeter = React.createClass({
 })
 
 ReactDOM.render(
-    <Greeter name="elijah" />,
+    <Greeter name="elijah" message="new message" />,
     document.getElementById('app')
 );
