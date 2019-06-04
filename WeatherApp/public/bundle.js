@@ -25455,16 +25455,33 @@
 
 	var React = __webpack_require__(1);
 
-	var Nav = React.createClass({
-	  displayName: 'Nav',
+	var _require = __webpack_require__(159),
+	    Link = _require.Link;
 
-	  render: function render() {
-	    return React.createElement(
-	      'h2',
-	      null,
-	      'Nav Component'
-	    );
-	  }
+	var Nav = React.createClass({
+	    displayName: 'Nav',
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	                'h2',
+	                null,
+	                'Nav Component'
+	            ),
+	            React.createElement(
+	                Link,
+	                { to: '/' },
+	                'Get Weather'
+	            ),
+	            React.createElement(
+	                Link,
+	                { to: '/about' },
+	                'About'
+	            )
+	        );
+	    }
 	});
 
 	module.exports = Nav;
