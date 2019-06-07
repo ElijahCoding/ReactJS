@@ -2,7 +2,7 @@
   "name": "boilerplate",
   "version": "1.0.0",
   "description": "Simple react app",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "karma start",
     "start": "node server.js"
@@ -13,7 +13,6 @@
     "axios": "^0.9.1",
     "express": "^4.13.4",
     "react": "^0.14.7",
-    "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0"
   },
@@ -35,6 +34,7 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
     "node-sass": "^3.4.2",
+    "react-addons-test-utils": "^0.14.6",
     "sass-loader": "^3.1.2",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
