@@ -51,14 +51,14 @@ var TodoApp = React.createClass({
         });
     },
 
-    hanleToggle: function (id) {
+    handleToggle: function (id) {
         var updatedTodos = this.state.todos.map(todo => {
             if (todo.id === id) {
                 todo.completed = !todo.completed;
             }
             return todo;
         });
-        
+
         this.setState({todos: updatedTodos});
     },
 
@@ -67,7 +67,7 @@ var TodoApp = React.createClass({
         return (
             <div>
                 <TodoSearch onSearch={this.handleSearch} />
-                <TodoList todos={todos} onToggle={this.hanleToggle} />
+                <TodoList todos={todos} onToggle={this.handleToggle} />
                 <AddTodo onAddTodo={this.handleAddTodo} />
             </div>
         )
