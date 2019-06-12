@@ -2,10 +2,12 @@ var redux = require('redux');
 
 var stateDefault = {
     name: 'anonymous',
-    hobbies: []
+    hobbies: [],
+    movies: []
 };
 
 var nextHobbyId = 1;
+var nextMovieId = 1;
 
 var reducer = (state = stateDefault, action) => {
     switch (action.type) {
@@ -14,6 +16,7 @@ var reducer = (state = stateDefault, action) => {
                 ...state,
                 name: action.name
             }
+
         case 'ADD_HOBBY':
             return {
                 ...state,
@@ -22,6 +25,24 @@ var reducer = (state = stateDefault, action) => {
                     {
                         id: nextHobbyId++,
                         hobby: action.hobby
+                    }
+                ]
+            }
+
+        case 'REMOVE_HOBBY':
+            return {
+                ...state,
+                hobbies: state.hobbies.filter(hobby => hobby.id !== action.id)
+            }
+        case 'ADD_MOVIE':
+            return {
+                ...state,
+                movies: [
+                    ...state.movies,
+                    {
+                        id: nextMovieId++,
+                        title: action.title,
+                        genre: action.genre
                     }
                 ]
             }
@@ -62,4 +83,10 @@ store.dispatch({
 store.dispatch({
     type: 'CHANGE_NAME',
     name: 'Ivan'
+});
+
+store.dispatch({
+    type: 'ADD_MOVIE',
+    title: 'TEST',
+    genre: 'TEST'
 });
