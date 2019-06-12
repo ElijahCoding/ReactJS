@@ -11,5 +11,3 @@ var reducer = (state = stateDefault, action) => {
 };
 
 var store = redux.createStore(reducer);
-
-console.log('currentState:', store.getState());
