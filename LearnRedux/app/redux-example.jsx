@@ -9,47 +9,36 @@ var stateDefault = {
 var nextHobbyId = 1;
 var nextMovieId = 1;
 
-var reducer = (state = stateDefault, action) => {
+var nameReducer = (state = 'anonymous', action) => {
     switch (action.type) {
         case 'CHANGE_NAME':
-            return {
-                ...state,
-                name: action.name
-            }
-
-        case 'ADD_HOBBY':
-            return {
-                ...state,
-                hobbies: [
-                    ...state.hobbies,
-                    {
-                        id: nextHobbyId++,
-                        hobby: action.hobby
-                    }
-                ]
-            }
-
-        case 'REMOVE_HOBBY':
-            return {
-                ...state,
-                hobbies: state.hobbies.filter(hobby => hobby.id !== action.id)
-            }
-        case 'ADD_MOVIE':
-            return {
-                ...state,
-                movies: [
-                    ...state.movies,
-                    {
-                        id: nextMovieId++,
-                        title: action.title,
-                        genre: action.genre
-                    }
-                ]
-            }
+            return action.name
         default:
             return state;
     }
-}
+};
+
+var hobbiesReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'ADD_HOBBY':
+            return [
+                ...state,
+                {
+                    id: nextHobbyId++,
+                    hobby: action.hobby
+                }
+            ];
+        case 'REMOVE_HOBBY':
+            return state.filter(hobbdy => hobby.id !== action.id)
+        default:
+            return state
+    }
+};
+
+var reducer = redux.combineReducers({
+    name: nameReducer,
+    hobbies: hobbiesReducer
+});
 
 var store = redux.createStore(reducer, redux.compose(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -74,19 +63,19 @@ store.dispatch({
     type: 'CHANGE_NAME',
     name: 'Elijah'
 });
-
+//
 store.dispatch({
     type: 'ADD_HOBBY',
     hobby: 'Running'
 })
-
-store.dispatch({
-    type: 'CHANGE_NAME',
-    name: 'Ivan'
-});
-
-store.dispatch({
-    type: 'ADD_MOVIE',
-    title: 'TEST',
-    genre: 'TEST'
-});
+//
+// store.dispatch({
+//     type: 'CHANGE_NAME',
+//     name: 'Ivan'
+// });
+//
+// store.dispatch({
+//     type: 'ADD_MOVIE',
+//     title: 'TEST',
+//     genre: 'TEST'
+// });
