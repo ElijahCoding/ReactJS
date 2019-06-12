@@ -34,6 +34,20 @@ var hobbiesReducer = (state = [], action) => {
     }
 };
 
+var addHobby = (hobby) => {
+    return {
+        type: 'ADD_HOBBY',
+        hobby
+    }
+}
+
+var removeHobby = (id) => {
+    return {
+        type: 'REMOVE_HOBBY',
+        id
+    }
+}
+
 var nextMovieId = 1;
 var moviesReducer = (state = [], action) => {
     switch (action.type) {
@@ -52,6 +66,20 @@ var moviesReducer = (state = [], action) => {
             return state
     }
 };
+
+var addMovie = (movie) => {
+    return {
+        type: 'ADD_MOVIE',
+        movie
+    }
+}
+
+var removeMovie = (id) => {
+    return {
+        type: 'REMOVE_MOVIE',
+        id
+    }
+}
 
 var reducer = redux.combineReducers({
     name: nameReducer,
@@ -77,21 +105,14 @@ var unsubscribe = store.subscribe(() => {
 var currentState = store.getState();
 console.log('currentState:', currentState);
 
+store.dispatch(changeName('Andrew'));
 
-store.dispatch(changeName('Elijah'));
-//
-store.dispatch({
-    type: 'ADD_HOBBY',
-    hobby: 'Running'
-})
-//
-// store.dispatch({
-//     type: 'CHANGE_NAME',
-//     name: 'Ivan'
-// });
-//
-// store.dispatch({
-//     type: 'ADD_MOVIE',
-//     title: 'TEST',
-//     genre: 'TEST'
-// });
+store.dispatch(addHobby('Running'));
+store.dispatch(addHobby('Walking'));
+store.dispatch(removeHobby(2));
+
+store.dispatch(changeName('Emily'));
+
+store.dispatch(addMovie('Mad Max', 'Action'));
+store.dispatch(addMovie('Start Wars', 'Action'));
+store.dispatch(removeMovie(1));
