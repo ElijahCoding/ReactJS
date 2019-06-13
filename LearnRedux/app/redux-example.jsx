@@ -1,4 +1,5 @@
 var redux = require('redux');
+var axios = require('axios');
 
 var nameReducer = (state = 'anonymous', action) => {
     switch (action.type) {
@@ -144,7 +145,7 @@ var unsubscribe = store.subscribe(() => {
     if (state.map.isFetching) {
         document.getElementById('app').innerHTML = 'Loading...';
     } else if (state.map.url) {
-        document.getElementById('app').innerHTML = state.map.url;
+        document.getElementById('app').innerHTML = '<a href="' + state.map.url + '" target="_blank">View your location.</a>';
     }
 });
 // unsubscribe();
@@ -153,15 +154,15 @@ var currentState = store.getState();
 console.log('currentState:', currentState);
 
 fetchLocation();
-
-store.dispatch(changeName('Andrew'));
-
-store.dispatch(addHobby('Running'));
-store.dispatch(addHobby('Walking'));
-store.dispatch(removeHobby(2));
-
-store.dispatch(changeName('Emily'));
-
-store.dispatch(addMovie('Mad Max', 'Action'));
-store.dispatch(addMovie('Start Wars', 'Action'));
-store.dispatch(removeMovie(1));
+//
+// store.dispatch(changeName('Andrew'));
+//
+// store.dispatch(addHobby('Running'));
+// store.dispatch(addHobby('Walking'));
+// store.dispatch(removeHobby(2));
+//
+// store.dispatch(changeName('Emily'));
+//
+// store.dispatch(addMovie('Mad Max', 'Action'));
+// store.dispatch(addMovie('Start Wars', 'Action'));
+// store.dispatch(removeMovie(1));
